@@ -81,13 +81,13 @@ public class MainActivity extends AppCompatActivity {
                 });
 
 
-                Toast.makeText(
-                        getApplicationContext(),
-                        itemList.get(groupPosition)
-                                + " : "
-                                + listDataChild.get(
-                                itemList.get(groupPosition)).get(
-                                childPosition).getTitle(), Toast.LENGTH_SHORT).show();
+                Intent myIntent = new Intent(MainActivity.this, UpdateDish.class);
+
+                // passe the order to next activity
+                myIntent.putExtra("dish", listDataChild.get(itemList.get(groupPosition)).get(childPosition));
+                setResult(10, myIntent);
+                finish();
+                startActivity(myIntent);
                 return false;
             }
         });
@@ -170,9 +170,6 @@ public class MainActivity extends AppCompatActivity {
             builder.setMessage("Do you want to place order?")
                     .setPositiveButton("Yes", dialogClickListener)
                     .setNegativeButton("No", dialogClickListener).show();
-        } else {
-
-            Toast.makeText(getApplicationContext(), "You must choose at least one dish", Toast.LENGTH_SHORT).show();
         }
 
     }
