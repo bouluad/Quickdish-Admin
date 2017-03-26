@@ -193,6 +193,25 @@ public class MainActivity extends AppCompatActivity {
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_about) {
+
+//            Intent myIntent = new Intent(SplashActivity.this, MainActivity.class);
+//            startActivity(myIntent);
+            return true;
+        }
+        if (id == R.id.action_clients) {
+
+            Intent myIntent = new Intent(MainActivity.this, ClientActivity.class);
+            startActivity(myIntent);
+            return true;
+        }
+        if (id == R.id.action_menu) {
+
+            return true;
+        }
+        if (id == R.id.action_orders) {
+
+            Intent myIntent = new Intent(MainActivity.this, TheCommandActivity.class);
+            startActivity(myIntent);
             return true;
         }
 
