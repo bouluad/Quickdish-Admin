@@ -8,6 +8,8 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
+import java.util.List;
+
 import fr.istic.mmm.quickdish.bo.Client;
 import fr.istic.mmm.quickdish.bo.Dish;
 import fr.istic.mmm.quickdish.bo.Order;
@@ -75,6 +77,44 @@ public class DataBase {
         DatabaseReference databaseReference = orderRef.push();
         databaseReference.setValue(order);
 
+    }
+
+    public void getOrdersByRestoId(String id, final Command c) {
+
+        // Get a reference to the todoItems child items it the database
+        final DatabaseReference myRef = database.getReference(id).child("order");
+
+
+        myRef.addChildEventListener(new ChildEventListener() {
+
+            @Override
+            public void onChildAdded(DataSnapshot dataSnapshot, String s) {
+                Order order = dataSnapshot.getValue(Order.class);
+                if (order != null) {
+                    c.exec(order);
+                }
+            }
+
+            @Override
+            public void onChildChanged(DataSnapshot dataSnapshot, String s) {
+
+            }
+
+            @Override
+            public void onChildRemoved(DataSnapshot dataSnapshot) {
+
+            }
+
+            @Override
+            public void onChildMoved(DataSnapshot dataSnapshot, String s) {
+
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
     }
 
     public void saveClient(Client client, String qrCode) {
