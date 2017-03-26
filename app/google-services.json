@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "976513674964",
+    "firebase_url": "https://quickdish-5f799.firebaseio.com",
+    "project_id": "quickdish-5f799",
+    "storage_bucket": "quickdish-5f799.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:976513674964:android:6e1063582459e270",
+        "android_client_info": {
+          "package_name": "mmm.istic.fr.quickdish"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "976513674964-ohni40utgveglc35a4m8tl7allj6nppa.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBMYgq-jjKCRzZeO4EDTLpTOKn-KTqFysI"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
