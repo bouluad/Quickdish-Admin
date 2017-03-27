@@ -37,6 +37,9 @@ public class ValidateCommand extends AppCompatActivity {
         order.setValidation(true);
         database.child(order.getId()).setValue(order);
 
+        Intent myIntent = new Intent(ValidateCommand.this, TheCommandActivity.class);
+        startActivity(myIntent);
+
     }
 
     @Override

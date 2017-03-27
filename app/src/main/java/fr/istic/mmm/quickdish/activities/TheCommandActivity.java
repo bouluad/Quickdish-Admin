@@ -3,6 +3,8 @@ package fr.istic.mmm.quickdish.activities;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ExpandableListView;
 import android.widget.ListView;
@@ -66,12 +68,12 @@ public class TheCommandActivity extends AppCompatActivity {
                 DatabaseReference myRef = database.getDatabase().getReference().child("order");
 
 
-
                 Intent myIntent = new Intent(TheCommandActivity.this, ValidateCommand.class);
 
                 // passe the order to next activity
                 myIntent.putExtra("order", listDataChild.get(itemList.get(groupPosition)).get(childPosition));
                 setResult(10, myIntent);
+                finish();
                 startActivity(myIntent);
                 return false;
             }
@@ -94,12 +96,55 @@ public class TheCommandActivity extends AppCompatActivity {
             @Override
             public void exec(Object o) {
                 Order order = ((Order) o);
-                if (!order.isValidation()){
+                if (!order.isValidation()) {
                     orders.add(order);
                 }
             }
         });
 
         listDataChild.put(itemList.get(0), orders);
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.menu_main, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle action bar item clicks here. The action bar will
+        // automatically handle clicks on the Home/Up button, so long
+        // as you specify a parent activity in AndroidManifest.xml.
+        int id = item.getItemId();
+
+        //noinspection SimplifiableIfStatement
+        if (id == R.id.action_about) {
+
+//            Intent myIntent = new Intent(SplashActivity.this, MainActivity.class);
+//            startActivity(myIntent);
+            return true;
+        }
+        if (id == R.id.action_clients) {
+
+            Intent myIntent = new Intent(TheCommandActivity.this, ClientActivity.class);
+            startActivity(myIntent);
+            return true;
+        }
+        if (id == R.id.action_menu) {
+            Intent myIntent = new Intent(TheCommandActivity.this, MainActivity.class);
+            startActivity(myIntent);
+
+            return true;
+        }
+        if (id == R.id.action_orders) {
+
+//            Intent myIntent = new Intent(TheCommandActivity.this, TheCommandActivity.class);
+//            startActivity(myIntent);
+            return true;
+        }
+
+        return super.onOptionsItemSelected(item);
     }
 }
