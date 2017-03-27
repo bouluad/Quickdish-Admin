@@ -18,7 +18,8 @@
         <activity android:name=".activities.TheCommandActivity" />
         <activity android:name=".activities.MainActivity" />
         <activity android:name=".activities.ClientActivity" />
-        <activity android:name=".activities.UpdateDish"></activity>
+        <activity android:name=".activities.UpdateDish" />
+        <activity android:name=".activities.ValidateCommand"></activity>
     </application>
 
 </manifest>

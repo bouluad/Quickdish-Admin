@@ -1,19 +1,17 @@
 package fr.istic.mmm.quickdish.activities;
 
-import android.support.v7.app.AppCompatActivity;
+import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
-import android.widget.ArrayAdapter;
 import android.widget.ExpandableListView;
 import android.widget.ListView;
-import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
 import fr.istic.mmm.quickdish.R;
-import fr.istic.mmm.quickdish.bo.Dish;
 import fr.istic.mmm.quickdish.bo.Order;
 import fr.istic.mmm.quickdish.firebase.DataBase;
 
@@ -29,7 +27,7 @@ public class TheCommandActivity extends AppCompatActivity {
 
     ListView mListView;
 
-    List <Order> orders;
+    List<Order> orders;
 
 
     @Override
@@ -64,14 +62,12 @@ public class TheCommandActivity extends AppCompatActivity {
                 Order o = listDataChild.get(itemList.get(groupPosition)).get(childPosition);
                 o.setValidation(true);
 
+                Intent myIntent = new Intent(TheCommandActivity.this, ValidateCommand.class);
 
-                Toast.makeText(
-                        getApplicationContext(),
-                        itemList.get(groupPosition)
-                                + " : "
-                                + listDataChild.get(
-                                itemList.get(groupPosition)).get(
-                                childPosition).getTableNumber(), Toast.LENGTH_SHORT).show();
+                // passe the order to next activity
+                myIntent.putExtra("order", listDataChild.get(itemList.get(groupPosition)).get(childPosition));
+                setResult(10, myIntent);
+                startActivity(myIntent);
                 return false;
             }
         });
