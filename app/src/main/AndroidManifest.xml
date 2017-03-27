@@ -19,7 +19,8 @@
         <activity android:name=".activities.MainActivity" />
         <activity android:name=".activities.ClientActivity" />
         <activity android:name=".activities.UpdateDish" />
-        <activity android:name=".activities.ValidateCommand"></activity>
+        <activity android:name=".activities.ValidateCommand" />
+        <activity android:name=".activities.AddDish"></activity>
     </application>
 
 </manifest>

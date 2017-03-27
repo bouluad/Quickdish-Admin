@@ -8,6 +8,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
@@ -53,6 +54,12 @@ public class UpdateDish extends AppCompatActivity {
                 database.child(dish.getId()).setValue(dish);
 
 
+                Toast.makeText(UpdateDish.this, "The update was well done", Toast.LENGTH_SHORT).show();
+
+                Intent myIntent = new Intent(UpdateDish.this, MainActivity.class);
+                setResult(10, myIntent);
+                finish();
+                startActivity(myIntent);
             }
         });
     }
