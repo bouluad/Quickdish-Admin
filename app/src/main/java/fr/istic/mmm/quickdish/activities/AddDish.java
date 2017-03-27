@@ -45,6 +45,19 @@ public class AddDish extends AppCompatActivity {
         description = (TextView) findViewById(R.id.descriptionAdd);
         nbpoint = (TextView) findViewById(R.id.nbPointAdd);
 
+        spinnerRegion.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            public void onItemSelected(AdapterView<?> parent, View view,
+                                       int position, long id) {
+                type = String.valueOf(spinnerRegion.getSelectedItem());
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+
+        });
+
         btnAdd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -53,22 +66,7 @@ public class AddDish extends AppCompatActivity {
                 dish.setPrice(price.getText().toString());
                 dish.setDescription(description.getText().toString());
                 dish.setNumberOfPoint(Integer.parseInt((nbpoint.getText().toString())));
-
-                spinnerRegion.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-                    public void onItemSelected(AdapterView<?> parent, View view,
-                                               int position, long id) {
-                        type = String.valueOf(spinnerRegion.getSelectedItem());
-                    }
-
-                    @Override
-                    public void onNothingSelected(AdapterView<?> parent) {
-                        // TODO Auto-generated method stub
-                    }
-
-                });
-
-                // TODO : Spinner return Null
-                System.out.println(" TYPE : " + type);
+                dish.setType(type);
 
                 final DatabaseReference menuRef = FirebaseDatabase.getInstance().getReference("100").child("menu");
                 DatabaseReference databaseReference = menuRef.push();
