@@ -36,6 +36,7 @@ public class ValidateCommand extends AppCompatActivity {
         DatabaseReference database = FirebaseDatabase.getInstance().getReference("100").child("order");
         order.setValidation(true);
         database.child(order.getId()).setValue(order);
+
     }
 
     @Override

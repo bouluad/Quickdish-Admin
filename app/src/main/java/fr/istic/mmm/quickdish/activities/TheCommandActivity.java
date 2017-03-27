@@ -7,6 +7,8 @@ import android.view.View;
 import android.widget.ExpandableListView;
 import android.widget.ListView;
 
+import com.google.firebase.database.DatabaseReference;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -61,6 +63,9 @@ public class TheCommandActivity extends AppCompatActivity {
 
                 Order o = listDataChild.get(itemList.get(groupPosition)).get(childPosition);
                 o.setValidation(true);
+                DatabaseReference myRef = database.getDatabase().getReference().child("order");
+
+
 
                 Intent myIntent = new Intent(TheCommandActivity.this, ValidateCommand.class);
 
@@ -89,7 +94,9 @@ public class TheCommandActivity extends AppCompatActivity {
             @Override
             public void exec(Object o) {
                 Order order = ((Order) o);
-                orders.add(order);
+                if (!order.isValidation()){
+                    orders.add(order);
+                }
             }
         });
 
