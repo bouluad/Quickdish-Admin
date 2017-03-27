@@ -10,7 +10,6 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.ExpandableListView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import org.json.JSONObject;
 
@@ -76,7 +75,7 @@ public class MainActivity extends AppCompatActivity {
                     @Override
                     public void exec(Object o) {
 
-                        order = new Order((Integer.valueOf(String.valueOf(o)) + 1), dishes, 1, false, qrCode);
+                        //   order = new Order((Integer.valueOf(String.valueOf(o)) + 1), dishes, 1, false, qrCode);
                     }
                 });
 
@@ -134,43 +133,6 @@ public class MainActivity extends AppCompatActivity {
         listDataChild.put(itemList.get(0), entrees);
         listDataChild.put(itemList.get(1), plats);
         listDataChild.put(itemList.get(2), desserts);
-
-    }
-
-
-    public void alertMessage() {
-
-        if (order != null) {
-            DialogInterface.OnClickListener dialogClickListener = new DialogInterface.OnClickListener() {
-                public void onClick(DialogInterface dialog, int which) {
-                    switch (which) {
-                        case DialogInterface.BUTTON_POSITIVE:
-                            // Yes button clicked
-
-                            Intent myIntent = new Intent(MainActivity.this, TheCommandActivity.class);
-
-                            // passe the order to next activity
-                            myIntent.putExtra("order", order);
-                            setResult(10, myIntent);
-                            finish();
-                            startActivity(myIntent);
-
-
-                            break;
-
-                        case DialogInterface.BUTTON_NEGATIVE:
-                            // No button clicked
-                            // do nothing
-                            break;
-                    }
-                }
-            };
-
-            AlertDialog.Builder builder = new AlertDialog.Builder(this);
-            builder.setMessage("Do you want to place order?")
-                    .setPositiveButton("Yes", dialogClickListener)
-                    .setNegativeButton("No", dialogClickListener).show();
-        }
 
     }
 

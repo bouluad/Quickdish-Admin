@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/Quickdish-Admin.iml" filepath="$PROJECT_DIR$/Quickdish-Admin.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Quickdish.iml" filepath="$PROJECT_DIR$/Quickdish.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
     </modules>
   </component>

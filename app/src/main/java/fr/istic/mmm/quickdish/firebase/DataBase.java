@@ -8,11 +8,10 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
-import java.util.List;
-
 import fr.istic.mmm.quickdish.bo.Client;
 import fr.istic.mmm.quickdish.bo.Dish;
 import fr.istic.mmm.quickdish.bo.Order;
+
 
 /**
  * Created by bouluad on 26/03/17.

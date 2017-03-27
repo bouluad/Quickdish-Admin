@@ -9,12 +9,19 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
 import fr.istic.mmm.quickdish.R;
 import fr.istic.mmm.quickdish.bo.Dish;
 
 public class UpdateDish extends AppCompatActivity {
 
+    private TextView description;
+    private TextView nbpoint;
     private Dish dish;
+    private TextView title;
+    private TextView price;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,10 +31,10 @@ public class UpdateDish extends AppCompatActivity {
         Button btnUpdate = (Button) findViewById(R.id.btn_update);
 
         dish = (Dish) getIntent().getSerializableExtra("dish");
-        final TextView title = (TextView) findViewById(R.id.txtTitle);
-        final TextView price = (TextView) findViewById(R.id.txtPrice);
-        TextView description = (TextView) findViewById(R.id.txtDescription);
-        TextView nbpoint = (TextView) findViewById(R.id.txtNbPoint);
+        title = (TextView) findViewById(R.id.txtTitle);
+        price = (TextView) findViewById(R.id.txtPrice);
+        description = (TextView) findViewById(R.id.txtDescription);
+        nbpoint = (TextView) findViewById(R.id.txtNbPoint);
         title.setText(dish.getTitle());
         price.setText(dish.getPrice());
         description.setText(dish.getDescription());
@@ -39,7 +46,12 @@ public class UpdateDish extends AppCompatActivity {
 
                 dish.setTitle(title.getText().toString());
                 dish.setPrice(price.getText().toString());
-                dish.setTitle(title.getText().toString());
+                dish.setDescription(description.getText().toString());
+                dish.setNumberOfPoint(Integer.parseInt((nbpoint.getText().toString())));
+
+                DatabaseReference database = FirebaseDatabase.getInstance().getReference("100").child("menu");
+                database.child(dish.getId()).setValue(dish);
+
 
             }
         });
